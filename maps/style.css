@@ -1,0 +1,122 @@
+#map {
+    height: 100%;
+}
+
+* {
+    font-family: 'Segoe UI';
+}
+
+h3,h2, a h3, a h2 {
+    font-family: 'Segoe UI';
+	color: #737373;
+    text-decoration: none;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI';
+	color: #737373;
+}
+
+table{
+    border: 2px solid black;
+    border-collapse: collapse;
+
+}
+
+#showInfoDialog {
+    visibility: hidden;
+    display: none;
+}
+#createDialog {
+    visibility: hidden;
+    display: none;
+}
+
+.dialogInner {
+    border: 1px solid black;
+    padding: 20px;
+  box-shadow: 5px 5px #666;
+    z-index: 200;
+    background-color: white;
+    width: 80%;
+    height: 75%;
+    position: absolute;
+    display: none;
+    opacity: 0;
+    overflow-y: scroll;
+}
+
+q {
+    font-style: italic;
+    font-size: 80%;
+}
+
+img.thumbnail {
+    width: 300px;
+}
+
+img.thumbnail-big {
+    max-width: 500px;
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    cursor: default;
+    font-family: 'Segoe UI';
+    font-size: 12px;
+    padding: 1px 6px;
+
+}
+
+menu {
+     overflow: hidden;
+    position: fixed; 
+    z-index: 20;
+}
+
+button {
+        text-decoration: none;
+    cursor: default;
+    font-family: 'Segoe UI' !important;
+    font-size: 12px;
+    padding: 1px 6px;
+}
+
+menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 4%; /* Position the navbar at the top of the page */
+    left: 30%;
+}
+.messageBox p {
+    color: white !important;
+
+}
+
+menu li {
+    float: left;
+}
+
+menu li a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+}
+
+img.logo {
+    float: left;
+    max-width: 40%;
+	padding-top: 25px;
+}
+

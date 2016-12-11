@@ -1,0 +1,60 @@
+.incomingMessage {
+background-color: #157fda;
+	border-radius: 50px 15px 15px;
+	
+		font-family: 'Segoe UI';
+	color: white;
+	padding: 15px;
+	float: left;
+}
+
+
+
+.outcommingMessage {
+background-color: #3f991f;
+	border-radius: 15px 50px 15px 15px;
+	
+		font-family: 'Segoe UI';
+	color: white;
+	padding: 7px;
+	float:right;
+}
+
+.sendMessage {
+	float: right
+	border-radius:30px;
+}
+
+textarea {
+    width: 30%;
+    height: 50px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    float: right;
+}
+
+button {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    float: right;
+}
+
+input {
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+
+}

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Styled Map Types</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../newStyle.css">
+    <link rel="stylesheet" type="text/css" href="messageBox.css">
+<script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      function insertNewMessage (newMessage) {
+
+
+  var HTML = [];
+  HTML.push ( "<div class=outcommingMessage><p>" + newMessage + "</p></div><br/><br/><br/><br/><br/>" );
+  $(HTML[0]).appendTo("#messageBox");
+  document.getElementById('reciever').style.display='none';
+  document.getElementById('reciever2').style.display='none';
+      }
+
+    </script>
+
+</head>
+<body>
+  <div>
+   <div id="messageBox">
+      
+   </div>
+   
+
+  <form class="sendMessage">
+      <span id="reciever">Příjemce</span><br/>
+  <input id="reciever2" type="text" name="firstname"><br/>
+    <textarea id="newMessage"></textarea><br/><br/><br/>
+    <button type="button" onclick="insertNewMessage(document.getElementById('newMessage').value);">Odeslat </button>
+  </form>
+   </div>
+  
+
+</body>
+</html>

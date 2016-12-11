@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Styled Map Types</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../newStyle.css">
+    <link rel="stylesheet" type="text/css" href="messageBox.css">
+<script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+  <div>
+   <div id="messageBox">
+      
+   </div>
+   <script src="./messages.js"></script>
+   <script src="./messageBox.js"></script>
+
+  <form class="sendMessage">
+    <textarea id="newMessage"></textarea><br/><br/><br/>
+    <button type="button" onclick="insertMessage(document.getElementById('newMessage').value);">Odeslat </button>
+  </form>
+   </div>
+  
+
+</body>
+</html>

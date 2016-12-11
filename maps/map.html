@@ -1,0 +1,504 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Styled Map Types</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="newStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+</head>
+<body>
+    <menu>
+        <img class="logo" src="logo.png" />
+        <ul id="horizontalMenu">
+            <li class="orange"><a href="#home" onclick="showDialog('tableDiv')">Seznam lokalit</a></li>
+            <li class="orange"><a href="#contact" onclick="showDialog('contactsDiv')">Kontakty</a></li>
+            <li class="orange"><a href="#businessConditions" onclick="showDialog('conditionsDiv')">Obchodní podmínky</a></li>
+            <li class="orange"><a href="#aboutUs" onclick="showDialog('aboutDiv')">O nás</a></li>
+        </ul>
+        <div>
+            <ul id="leftMenu">
+                <li class="leftMenuItem"><a href="#"><img src="./img/calendar-active.png" /></a></li>
+                <li class="leftMenuItem"><a href="#"><img src="./img/profile-active.png" onclick="showDialog('user1Div')" /></a></li>
+                <li class="leftMenuItem"><a href="#"><img src="./img/bell-active.png" onclick="showDialog('messagesDiv')" /></a></li>
+            </ul>
+        </div>
+    </menu>
+
+    <div id="map"></div>
+
+    <div id="showInfoDialog">
+        <div class="data">
+            <span class="image"><img class="thumbnail" /></span>
+        </div>
+        <div class="data">
+            Název lokality: <strong><span class="nazev"></span></strong>
+        </div>
+        <div class="data">
+            Autor: <span class="autor">das</span>
+        </div>
+        <div>
+            <a href=# class="target">Odkaz na lokalitu</a>
+        </div>
+    </div>
+
+    <div id="createDialog">
+        <div>
+            <form target="_self">
+                <div>
+                    <label>Název:</label>
+                    <input type="text" name="name" />
+                </div>
+                <div>
+                    <label>Úvodní fotka:</label>
+                    <input type="file" name="pic" accept="image/*">
+                </div>
+                <input class="save" type="submit" value="Uložit">
+            </form>
+        </div>
+    </div>
+
+    <div id="locationDiv" class="wrapDiv">
+        <div id="locationDivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+
+            <div>
+                <h1>Lokace: <span id="locationName"></span></h1>
+                <q id="location"></q>
+                <div id="autor"></div>
+                <script src="defaultLocations.js"></script>
+                <script src="functions.js"></script>
+
+                <div class="data">
+                    <span id="image"><img class="thumbnail" /></span>
+                </div>
+
+                <button type="button" class="button">Přihlásit se</button>
+                <button type="button" class="button" onclick="showDialog('messagesDiv')">Poslat dotaz</button>
+                <a id="showOnMap" class="button">Zobrazit na mapě</a>
+            </div>
+            <button type="button" class="button" onclick="showDialog('tableDiv')">Seznam lokalit</button>
+        </div>
+    </div>
+
+    <div id="contactsDiv" class="wrapDiv">
+        <div id="contactsDivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <h1>Kontakty</h1>
+            <ul>
+                <li>neváhejte nás kontaktovat na  <a href="mailto:dusan@freetravel.cz?subject=ahoj">email</a></li>
+                <li>Adresa: Herlošova 1626/4, 390 01 Tábor</li>
+                <li>Telefon:381 258 541</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="aboutDiv" class="wrapDiv">
+        <div id="aboutDivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <h1>O nás</h1>
+            <p>
+                Firma Free travel byla založena skupinou nadšených studentů, které již nebavilo vyrazit do cizího kraje, zde strávit odpoledne v muzeu místní keramiky a den zakončit v obchodě se suvenýry nákupem předraženého odznáčku na vycházkovou hůl, kterou nemáme.
+            </p>
+            <p>
+                Proto jsme založili projekt Free travel, kde sami místní mohou provádět turisty po svém rodišti a ukázat jim tak krásy kraje, které by jinak zůstaly pro turisty neodhaleny. Jakákoliv odměna pro průvodce je vždy vítána a je čistě na vzájemné domluvě.
+            </p>
+        </div>
+    </div>
+
+    <div id="conditionsDiv" class="wrapDiv">
+        <div id="conditionsDivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <h1>Obchodní podmínky</h1>
+            <p>Portál Free travel slouží pouze jako kanál pro vzájemnou komunikaci zájemců u průvodce a průvodců.</p>
+            <p>Jakákoliv odměna za provedení je čistě na domluvě zúčastněných stran a portál Free travel za správné vypořádání nijak neručí.</p>
+        </div>
+    </div>
+
+    <div id="user1Div" class="wrapDiv">
+        <div id="user1DivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <h1>David Hasselhoff</h1>
+            <ul>
+                <p><img src="img/hasselhoff.jpg" style="float:right;width:300px">
+                <li> id uživatele - <b>hasseldav</b> </li>
+                <li> věk - 35 </li>
+                <li> bydliště - Prague </li>
+                <li> hodnocení - 7/5 </li>
+                <li>jazyky - CZ,EN,RU </li>
+                </p>
+                <h2>BIO</h2>
+                <p>
+                    Proin sed lobortis odio, in sagittis turpis. Morbi id pellentesque sem. Sed quis nisi sed purus lacinia tempor. Aenean gravida lorem in metus molestie, facilisis ornare risus varius. Aliquam in turpis eu purus interdum lacinia. In ornare libero nec augue auctor, eget vulputate elit sollicitudin. Donec pulvinar, nunc et sollicitudin semper, diam turpis vestibulum neque, sed tempus urna turpis blandit leo. Duis pharetra ac enim nec pulvinar. Integer non velit fermentum, feugiat purus quis, semper quam. Cras non magna molestie, euismod massa ut, semper mi. In elit lorem, aliquam ac varius ac, porttitor vitae felis. Quisque consequat lectus risus, non interdum nisi bibendum vitae. Nunc id lectus sem.
+                </p>
+            </ul>
+        </div>
+    </div>
+
+    <div id="user2Div" class="wrapDiv">
+        <div id="user2DivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <h1>Chuck Norris</h1>
+            <ul>
+                <p><img src="img/chuck.jpg" style="float:right;width:300px">
+                <li> id uživatele - <b>chucknor</b> </li>
+                <li> věk - ??? </li>
+                <li> bydliště - Praha </li>
+                <li> hodnocení - 55/5 </li>
+                <li>jazyky - CZ,EN,RU </li>
+                </p>
+                <h2>BIO</h2>
+                <p>
+                    Proin sed lobortis odio, in sagittis turpis. Morbi id pellentesque sem. Sed quis nisi sed purus lacinia tempor. Aenean gravida lorem in metus molestie, facilisis ornare risus varius. Aliquam in turpis eu purus interdum lacinia. In ornare libero nec augue auctor, eget vulputate elit sollicitudin. Donec pulvinar, nunc et sollicitudin semper, diam turpis vestibulum neque, sed tempus urna turpis blandit leo. Duis pharetra ac enim nec pulvinar. Integer non velit fermentum, feugiat purus quis, semper quam. Cras non magna molestie, euismod massa ut, semper mi. In elit lorem, aliquam ac varius ac, porttitor vitae felis. Quisque consequat lectus risus, non interdum nisi bibendum vitae. Nunc id lectus sem.
+                </p>
+            </ul>
+        </div>
+    </div>
+
+    <div id="user3Div" class="wrapDiv">
+        <div id="user3DivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <h1>Arnold Schwarzenegger</h1>
+            <ul>
+                <p><img src="img/arnold.jpg" style="float:right;width:300px">
+                <li> id uživatele - <b>terminator2</b> </li>
+                <li> věk - 55 </li>
+                <li> bydliště - Prague </li>
+                <li> hodnocení - 1/5 </li>
+                <li>jazyky - CZ, DE </li>
+                </p>
+                <h2>BIO</h2>
+                <p>
+                    Proin sed lobortis odio, in sagittis turpis. Morbi id pellentesque sem. Sed quis nisi sed purus lacinia tempor. Aenean gravida lorem in metus molestie, facilisis ornare risus varius. Aliquam in turpis eu purus interdum lacinia. In ornare libero nec augue auctor, eget vulputate elit sollicitudin. Donec pulvinar, nunc et sollicitudin semper, diam turpis vestibulum neque, sed tempus urna turpis blandit leo. Duis pharetra ac enim nec pulvinar. Integer non velit fermentum, feugiat purus quis, semper quam. Cras non magna molestie, euismod massa ut, semper mi. In elit lorem, aliquam ac varius ac, porttitor vitae felis. Quisque consequat lectus risus, non interdum nisi bibendum vitae. Nunc id lectus sem.
+                </p>
+            </ul>
+        </div>
+    </div>
+
+    <div id="tableDiv" class="wrapDiv">
+        <div id="tableDivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <h1>Lokality</h1>
+            <div><a href="#Petrin" onclick="showDialog('orderedTableDiv')">Seřazené</a></div>
+            <div><a href="#Petrin" onclick="showDialog('kostelyTableDiv')">Kostely</a></div>
+            <div><a href="#Petrin" onclick="showDialog('rozhlednyTableDiv')">Rozhledny</a></div>
+            <table id="t01" rules="groups">
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5> <a href="#Petrin" onclick="showLocationDialog('locationDiv', 4)"> <img src="img/velky-podhled.jpg" alt="Petrin" style="width:304px;"></td>
+                        <td><a href="#Petrin" onclick="showLocationDialog('locationDiv', 4)"><h3>Petřín</h3></a></td>
+                        <td align="left" rowspan=5><a href="#Kostel" onclick="showLocationDialog('locationDiv', 5)"><img src="img/velky-podhled2.jpg" alt="Kostel" style="width:304px;"></td>
+                        <td><a href="#Kostel" onclick="showLocationDialog('locationDiv', 5)"><h3>Kostel sv.Mikuláše</h3></td>
+                    </tr>
+                    <tr>
+                        <td>pátá nejnavštěvovanější památka</td>
+                        <td>první nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>rozhledna</td>
+                        <td>kostely a chrámy</td>
+                    </tr>
+                    <tr>
+                        <td>Praha</td>
+                        <td>Praha</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5><a href="#Rozcesti" onclick="showLocationDialog('locationDiv', 0)"><img src="img/loc.jpg" alt="Na rozcestí" style="width:304px;"></td>
+                        <td><a href="#Rozcesti" onclick="showLocationDialog('locationDiv', 0)"><h3>Na rozcestí</h3></td>
+                        <td align="left" rowspan=5><a href="#Podsveti" onclick="showLocationDialog('locationDiv',1)"><img src="img/loc1.jpg" alt="Podsvětí města pražského" style="width:304px;"></td>
+                        <td><a href="#Podsveti" onclick="showLocationDialog('locationDiv', 1)"><h3>Podsvětí města pražského</h3></td>
+                    </tr>
+                    <tr>
+                        <td>druhá nejnavštěvovanější památka</td>
+                        <td>třetí nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>rozhledna</td>
+                        <td>kostely a chrámy</td>
+                    </tr>
+                    <tr>
+                        <td>Praha</td>
+                        <td>Praha</td>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5><a href="#Appartment" onclick="showLocationDialog('locationDiv', 2)"><img src="img/loc2.jpg" alt="my Appartment(18+)" style="width:304px;"></td>
+                        <td><a href="#Appartment" onclick="showLocationDialog('locationDiv', 2)"><h3>my Appartment(18+)</h3></td>
+                        <td align="left" rowspan=5><a href="#Name" onclick="showLocationDialog('locationDiv', 3)"><img src="img/loc3.jpg" alt="Name" style="width:304px;"></td>
+                        <td><a href="#Name" onclick="showLocationDialog('locationDiv', 3)"><h3>Name</h3></td>
+                    </tr>
+                    <tr>
+                        <td>sedmá nejnavštěvovanější památka</td>
+                        <td>desátá nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>rozhledna</td>
+                        <td>kostely a chrámy</td>
+                    </tr>
+                    <tr>
+                        <td>Praha</td>
+                        <td>Praha</td>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5><a href="#Hylacka" onclick="showLocationDialog('locationDiv', 6)"><img src="img/hylacka.jpg" alt="hylacka" style="width:304px;"></td>
+                        <td><a href="#Hylacka" onclick="showLocationDialog('locationDiv', 6)"><h3>Hýlačka</h3></td>
+                    </tr>
+                    <tr>
+                        <td>jedenáctá nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>rozhledna</td>
+                    </tr>
+                    <tr>
+                        <td>Tábor</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="orderedTableDiv" class="wrapDiv">
+        <div id="orderedTableDivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <h1>Lokality</h1>
+            <div><a href="#Petrin" onclick="showDialog('orderedTableDiv')">Seřazené</a></div>
+            <div><a href="#Petrin" onclick="showDialog('kostelyTableDiv')">Kostely</a></div>
+            <div><a href="#Petrin" onclick="showDialog('rozhlednyTableDiv')">Rozhledny</a></div>
+            <table id="t01" rules="groups">
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5><a href="#Kostel" onclick="showLocationDialog('locationDiv', 5)"><img src="img/velky-podhled2.jpg" alt="Kostel" style="width:304px;"></td>
+                        <td><a href="#Kostel" onclick="showLocationDialog('locationDiv', 5)"><h3>Kostel sv.Mikuláše</h3></td>
+                        <td align="left" rowspan=5><a href="#Rozcesti" onclick="showLocationDialog('locationDiv', 0)"><img src="img/loc.jpg" alt="Na rozcestí" style="width:304px;"></td>
+                        <td><a href="#Rozcesti" onclick="showLocationDialog('locationDiv', 0)"><h3>Na rozcestí</h3></td>
+                    </tr>
+                    <tr>
+                        <td>první nejnavštěvovanější památka</td>
+                        <td>druhá nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>kostely a chrámy</td>
+                        <td>rozhledna</td>
+                    </tr>
+                    <tr>
+                        <td>Praha</td>
+                        <td>Praha</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5><a href="#Podsveti" onclick="showLocationDialog('locationDiv',1)"><img src="img/loc1.jpg" alt="Podsvětí města pražského" style="width:304px;"></td>
+                        <td><a href="#Podsveti" onclick="showLocationDialog('locationDiv', 1)"><h3>Podsvětí města pražského</h3></td>
+                        <td align="left" rowspan=5><img src="img/velky-podhled.jpg" alt="Pertin" style="width:304px;"></td>
+                        <td><h3>Petřín</h3></td>
+                    </tr>
+                    <tr>
+                        <td>třetí nejnavštěvovanější památka</td>
+                        <td>pátá nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>kostely a chrámy</td>
+                        <td>rozhledna</td>
+                    </tr>
+                    <tr>
+                        <td>Praha</td>
+                        <td>Praha</td>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5><a href="#Appartment" onclick="showLocationDialog('locationDiv', 2)"><img src="img/loc2.jpg" alt="my Appartment(18+)" style="width:304px;"></td>
+                        <td><a href="#Appartment" onclick="showLocationDialog('locationDiv', 2)"><h3>my Appartment(18+)</h3></td>
+                        <td align="left" rowspan=5><a href="#Name" onclick="showLocationDialog('locationDiv', 3)"><img src="img/loc3.jpg" alt="Name" style="width:304px;"></td>
+                        <td><a href="#Name" onclick="showLocationDialog('locationDiv', 3)"><h3>Name</h3></td>
+                    </tr>
+                    <tr>
+                        <td>sedmá nejnavštěvovanější památka</td>
+                        <td>desátá nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>rozhledna</td>
+                        <td>kostely a chrámy</td>
+                    </tr>
+                    <tr>
+                        <td>Praha</td>
+                        <td>Praha</td>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5><a href="#Hylacka" onclick="showLocationDialog('locationDiv', 6)"><img src="img/hylacka.jpg" alt="hylacka" style="width:304px;"></td>
+                        <td><a href="#Hylacka" onclick="showLocationDialog('locationDiv', 6)"><h3>Hýlačka</h3></td>
+                    </tr>
+                    <tr>
+                        <td>jedenáctá nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>rozhledna</td>
+                    </tr>
+                    <tr>
+                        <td>Tábor</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="rozhlednyTableDiv" class="wrapDiv">
+        <div id="rozhlednyTableDivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <h1>Lokality</h1>
+            <div><a href="#Petrin" onclick="showDialog('orderedTableDiv')">Seřazené</a></div>
+            <div><a href="#Petrin" onclick="showDialog('kostelyTableDiv')">Kostely</a></div>
+            <div><a href="#Petrin" onclick="showDialog('rozhlednyTableDiv')">Rozhledny</a></div>
+            <table id="t01" rules="groups">
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5> <a href="#Petrin" onclick="showLocationDialog('locationDiv', 4)"> <img src="img/velky-podhled.jpg" alt="Pertin" style="width:304px;"></td>
+                        <td><a href="#Petrin" onclick="showLocationDialog('locationDiv', 4)"><h3>Petřín</h3></td>
+                        <td align="left" rowspan=5><a href="#Hylacka" onclick="showLocationDialog('locationDiv', 6)"><img src="img/hylacka.jpg" alt="hylacka" style="width:304px;"></td>
+                        <td><a href="#Hylacka" onclick="showLocationDialog('locationDiv', 6)"><h3>Hýlačka</h3></td>
+                    </tr>
+                    <tr>
+                        <td>pátá nejnavštěvovanější památka</td>
+                        <td>jedenáctá nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>rozhledna</td>
+                        <td>rozhledna</td>
+                    </tr>
+                    <tr>
+                        <td>Praha</td>
+                        <td>Tábor</td>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5><a href="#Rozcesti" onclick="showLocationDialog('locationDiv', 0)"><img src="img/loc.jpg" alt="Na rozcestí" style="width:304px;"></td>
+                        <td><a href="#Rozcesti" onclick="showLocationDialog('locationDiv', 0)"><h3>Na rozcestí</h3></td>
+                        <td align="left" rowspan=5><a href="#Appartment" onclick="showLocationDialog('locationDiv', 2)"><img src="img/loc2.jpg" alt="my Appartment(18+)" style="width:304px;"></td>
+                        <td><a href="#Appartment" onclick="showLocationDialog('locationDiv', 2)"><h3>my Appartment(18+)</h3></td>
+                    </tr>
+                    <tr>
+                        <td>druhá nejnavštěvovanější památka</td>
+                        <td>sedmá nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>rozhledna</td>
+                        <td>rozhledna</td>
+                    </tr>
+                    <tr>
+                        <td>Praha</td>
+                        <td>Praha</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="kostelyTableDiv" class="wrapDiv">
+        <div id="kostelyTableDivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <h1>Lokality</h1>
+            <div><a href="#Petrin" onclick="showDialog('orderedTableDiv')">Seřazené</a></div>
+            <div><a href="#Petrin" onclick="showDialog('kostelyTableDiv')">Kostely</a></div>
+            <div><a href="#Petrin" onclick="showDialog('rozhlednyTableDiv')">Rozhledny</a></div>
+            <table id="t01" rules="groups">
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5><a href="#Name" onclick="showLocationDialog('locationDiv', 3)"><img src="img/loc3.jpg" alt="Name" style="width:304px;"></td>
+                        <td><a href="#Name" onclick="showLocationDialog('locationDiv', 3)"><h3>Name</h3></td>
+                        <td align="left" rowspan=5><a href="#Kostel" onclick="showLocationDialog('locationDiv', 5)"><img src="img/velky-podhled2.jpg" alt="Kostel" style="width:304px;"></td>
+                        <td><a href="#Kostel" onclick="showLocationDialog('locationDiv', 5)"><h3>Kostel sv.Mikuláše</h3></td>
+                    </tr>
+                    <tr>
+                        <td>desátá nejnavštěvovanější památka</td>
+                        <td>první nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>kostely a chrámy</td>
+                        <td>kostely a chrámy</td>
+                    </tr>
+                    <tr>
+                        <td>Praha</td>
+                        <td>Praha</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td align="left" rowspan=5><a href="#Podsveti" onclick="showLocationDialog('locationDiv',1)"><img src="img/loc1.jpg" alt="Podsvětí města pražského" style="width:304px;"></td>
+                        <td><a href="#Podsveti" onclick="showLocationDialog('locationDiv', 1)"><h3>Podsvětí města pražského</h3></td>
+                    </tr>
+                    <tr>
+                        <td>třetí nejnavštěvovanější památka</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/10-512.png" alt="Stars" style="width:90px;"></td>
+                    </tr>
+                    <tr>
+                        <td>kostely a chrámy</td>
+                    </tr>
+                    <tr>
+                        <td>Praha</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="messagesDiv" class="wrapDiv">
+        <div id="messagesDivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <iframe src="messageBox/messagingList.html" width="100%" height="98%" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script src="defaultLocations.js"></script>
+    <script src="mapstyle.js"></script>
+    <script src="functions.js"></script>
+    <script src="mapFunctions.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqjyKJybEpyt3TQ5T1FjdKWZ0A1prPlxw&callback=initMap"></script>
+
+</body>
+</html>

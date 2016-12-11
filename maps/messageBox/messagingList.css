@@ -1,0 +1,55 @@
+body {
+	font-family: 'Segoe UI';
+	color: #737373 !important;
+    overflow: hidden;
+
+}
+
+
+.date {
+font-style: italic;
+
+}
+
+.messageEntry {
+	background: rgba(160,160,160,0.2);
+
+
+	}
+
+.messagingList{
+
+	padding: 10px
+}
+
+.block-a {
+	width: 33%;
+	display: inline;
+}
+.block-b {
+	width: 50%;
+	display: inline;
+}
+
+.angle {
+	display: inline;
+	float: right;
+	margin: 0;
+	padding: 0;
+	margin-right: 15px;
+}
+
+.angle:active {
+  transform: translateY(4px);
+}
+
+.messageEntry {
+	padding: 10px;
+	margin-bottom: 5px
+}
+
+#newMessageDiv a {
+		color: #737373 !important;
+		margin-bottom: 5px;
+		float: right
+}

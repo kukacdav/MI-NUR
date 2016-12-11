@@ -1,0 +1,65 @@
+
+.button:hover {background-color: #6dbdc3}
+
+.orange:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.orange {
+	background-color: #e36a5c;
+	border-radius: 5px;
+	list-style-type: none;
+	display: inline;
+	margin-right: 10px; 
+	font-family: 'Segoe UI';
+	color: white;
+}
+
+.orange:hover {
+	background-color: #6dbdc3
+}
+
+.orangeActive {
+		background-color: #3e8e41 !important;
+		color: blue;
+}
+
+
+
+#horizontalMenu {
+	margin: auto;
+	margin-top: 40px;
+	text-align: center;
+	
+}
+
+#leftMenu {
+	position: fixed;
+	top: 7%;
+	left: 80%;
+	background: rgba(64,64,64,0.2);
+	padding-left: 20px;
+		border-radius: 5px;
+
+}
+
+.leftMenu ul {
+list-style-type: none !important;
+
+}
+
+.leftMenuItem img {
+	display: inline;
+	font-family: 'Segoe UI' !important;
+	color: #737373 !important;
+	font-size: 1em;
+	background-image: "./img/calendar-active.png";
+	margin-right: 10px;
+}
+
+
+.leftMenuItem a:active {
+  transform: translateY(4px);
+}
