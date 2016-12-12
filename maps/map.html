@@ -20,7 +20,7 @@
         </ul>
         <div>
             <ul id="leftMenu">
-                <li class="leftMenuItem"><a href="#"><img src="./img/calendar-active.png" /></a></li>
+                <li class="leftMenuItem"><a href="#"><img src="./img/calendar-active.png" onclick="showDialog('calendarDiv')"/></a></li>
                 <li class="leftMenuItem"><a href="#"><img src="./img/profile-active.png" onclick="showDialog('user1Div')" /></a></li>
                 <li class="leftMenuItem"><a href="#"><img src="./img/bell-active.png" onclick="showDialog('messagesDiv')" /></a></li>
             </ul>
@@ -493,6 +493,14 @@
             <iframe src="messageBox/messagingList.html" width="100%" height="98%" frameborder="0"></iframe>
         </div>
     </div>
+
+    <div id="calendarDiv" class="wrapDiv">
+        <div id="calendarDivInner" class="dialogInner">
+            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
+            <iframe src="calendar/calendar.html" width="100%" height="98%" frameborder="0"></iframe>
+        </div>
+    </div>
+
 
     <script src="defaultLocations.js"></script>
     <script src="mapstyle.js"></script>

@@ -1,0 +1,29 @@
+.calendarEntry {
+	background: rgba(160,160,160,0.2);
+	border-radius: 4px;
+	padding: 5px;
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 3px
+}
+
+.block-a {
+	float: left;
+	width: 30%;
+}
+
+.block-b {
+
+	float: left;
+	width: 30%;
+}
+
+.block-c {
+
+	float: right;
+	width: auto;
+}
+
+body {
+	height: 90% !important;
+}
