@@ -10,11 +10,30 @@
 <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript">
-      function insertNewMessage (newMessage) {
-
-
+      function insertNewMessage (newMessage, reciever) {
+        document.getElementById('recieversName').innerHTML = reciever;
   var HTML = [];
-  HTML.push ( "<div class=outcommingMessage><p>" + newMessage + "</p></div><br/><br/><br/><br/><br/>" );
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+  var HH = today.getHours();
+  var MM = today.getMinutes();
+  if(dd<10) {
+      dd='0'+dd
+  } 
+  if(mm<10) {
+      mm='0'+mm
+  } 
+  if (HH<10) {
+    HH='0' + HH
+  }
+  if (MM<10) {
+    MM='0' + MM
+  }
+    today = HH + ':' + MM + ', '+ dd+'. '+ mm +'. '+yyyy;
+
+  HTML.push( "<div class=outcommingMessage><p class=messageInfo><span class=sender> David Hazzelhof</span><span class=messageDate>" + today + "</span></p><p>" + newMessage + "</p></div>" );
   $(HTML[0]).appendTo("#messageBox");
   document.getElementById('reciever').style.display='none';
   document.getElementById('reciever2').style.display='none';
@@ -24,7 +43,11 @@
 
 </head>
 <body>
-  <div>
+  
+  <div id="messageHeader">
+      <a href="./messagingList.html">Zpět</a>
+      <p id="recieversName"></p>
+  </div>
    <div id="messageBox">
       
    </div>
@@ -32,12 +55,14 @@
 
   <form class="sendMessage">
       <span id="reciever">Příjemce</span><br/>
-  <input id="reciever2" type="text" name="firstname"><br/>
-    <textarea id="newMessage"></textarea><br/><br/><br/>
-    <button type="button" onclick="insertNewMessage(document.getElementById('newMessage').value);">Odeslat </button>
+      <select id="reciever2" name="users">
+        <option value="Bruce Wilis">Bruce Wilis</option>
+        <option value="Marlon Brando">Marlon Brando</option>
+        <option value="Andy Murray">Andy Murray</option>
+        <option value="Clint Eastwood">Clint Eastwood</option>
+  </select>
+    <textarea id="newMessage"></textarea><br/>
+    <button type="button" onclick="insertNewMessage(document.getElementById('newMessage').value, document.getElementById('reciever2').value);">Odeslat </button>
   </form>
-   </div>
-  
-
 </body>
 </html>

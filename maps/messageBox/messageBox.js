@@ -6,7 +6,7 @@ loadMessages();
 function loadMessages () {
 	var HTML = [];
 	for (i = 0; i < 3; i++) { 
-		HTML.push( "<div class=" + messages[i].type + "><p>" + messages[i].content + "</p></div>" );
+		HTML.push( "<div class=" + messages[i].type + "><p class=messageInfo><span class=sender>" + messages[i].sender + "</span><span class=messageDate>" + messages[i].date + "</span></p><p>" + messages[i].content + "</p></div>" );
 		$(HTML[i]).appendTo("#messageBox");
 	}
 }
