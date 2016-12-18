@@ -49,6 +49,10 @@ table{
     overflow-y: scroll;
 }
 
+.no-overflow {
+    overflow: hidden !important;
+}
+
 q {
     font-style: italic;
     font-size: 80%;
