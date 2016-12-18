@@ -95,3 +95,8 @@ select
     resize: none;
     margin: 5px 10px;
     overflow: hidden;}
+
+body {
+    height: 80%;
+
+}

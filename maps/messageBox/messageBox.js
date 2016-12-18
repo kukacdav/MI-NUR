@@ -1,4 +1,11 @@
-
+$(document).ready(function(){
+    $("#newMessage").keyup(function(event){
+        if(event.which == 13)
+        {
+        	insertMessage(document.getElementById('newMessage').value);
+       }
+    });
+});
 
 loadMessages();
 
@@ -37,5 +44,6 @@ function insertMessage(newMessage) {
 	
 	HTML.push ("<div class=outcommingMessage><p class=messageInfo><span class=sender>David Hasselhof</span><span class=messageDate>" + today + "</span></p><p>" + newMessage + "</p></div>");
 	$(HTML[0]).appendTo("#messageBox");
-
+	document.getElementById('newMessage').value = '';
+ 
 }

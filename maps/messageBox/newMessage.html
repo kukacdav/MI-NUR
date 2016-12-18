@@ -7,9 +7,20 @@
     <link rel="stylesheet" type="text/css" href="../style.css">
     <link rel="stylesheet" type="text/css" href="../newStyle.css">
     <link rel="stylesheet" type="text/css" href="messageBox.css">
-<script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript">
+
+$(document).ready(function(){
+    $("#newMessage").keyup(function(event){
+        if(event.which == 13)
+        {
+          insertNewMessage(document.getElementById('newMessage').value, document.getElementById('reciever2').value);
+        }
+
+    });
+});
+    
       function insertNewMessage (newMessage, reciever) {
         document.getElementById('recieversName').innerHTML = reciever;
   var HTML = [];
@@ -37,8 +48,11 @@
   $(HTML[0]).appendTo("#messageBox");
   document.getElementById('reciever').style.display='none';
   document.getElementById('reciever2').style.display='none';
+  document.getElementById('newMessage').value = '';
+  
       }
 
+    
     </script>
 
 </head>
