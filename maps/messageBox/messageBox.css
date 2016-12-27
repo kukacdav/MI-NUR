@@ -2,7 +2,6 @@
 	font-family: 'Segoe UI';
 	color: black;
 	padding: 15px;
-	width:95%;
     border: 1px solid #ccc;
     border-radius: 3px;
     text-decoration: none;
@@ -23,7 +22,6 @@
 	font-family: 'Segoe UI';
 	color: black;
 	padding: 15px;
-	width:95%;
     border: 1px solid #ccc;
     border-radius: 3px; 
     text-decoration: none;
@@ -36,7 +34,7 @@
 }
 
 textarea {
-    width: 97.5%;
+    width: 96%;
     height: 100px;
     padding: 20px;
     box-sizing: border-box;

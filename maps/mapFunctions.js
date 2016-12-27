@@ -2,7 +2,7 @@
 
     var id = getUrlParameter('id');
     
-    if (id != undefined) {
+    if (id !== undefined) {
         selectedLocation = id;
     }
     var mapCanvas = document.getElementById("map");
@@ -14,26 +14,33 @@
         disableDefaultUI: true
     };
     map = new google.maps.Map(mapCanvas, mapOptions);
-    createDefaultLocations(map, id != undefined);
-    google.maps.event.addListener(map, 'click', function (event) {
-        createLocation(map, event);
+    createDefaultLocations(map, id !== undefined);
+    //google.maps.event.addListener(map, 'click', function (event) {
+    //    createLocation(map, event);
+    //});
+    google.maps.event.addListener(map, 'dblclick', function (event) {
+        resetMenu();
     });
-
 }
 var selectedLocation;
 var infoWindowsReference = [];
 var infoWindows = [];
 var markers = [];
 
+function resetMenu()
+{
+    $('#st-container').removeClass("st-menu-open");
+}
+
 function toggleBounce(marker) {
-    if (marker.getAnimation() != null) {
+    if (marker.getAnimation() !== null) {
         marker.setAnimation(null);
     } else {
         clearInfoWindows();
         marker.setAnimation(google.maps.Animation.BOUNCE);
 
         createInfoWindowForMarker(marker);
-        map.setCenter(marker.getPosition());
+        //map.setCenter(marker.getPosition());
     }
 }
 
@@ -68,13 +75,13 @@ function createInfoWindowForMarker(marker) {
     $(html).find(".target").attr("onclick", "showLocationDialog('locationDiv'," + id + ");");
     $(html).find(".image").find("img").attr("src", defaultLocations[id].img);
     $.each(defaultLocations, function (index, value) {
-        if (value.id == id) {
+        if (value.id === id) {
             var infowindow = new google.maps.InfoWindow({
                 content: $(html).html() + "Souřadnice: <q>" + marker.getPosition() + "</q>", metadata: {
                     id: markerCounter
                 }
             });
-            if (jQuery.inArray(id, infoWindowsReference) == -1) {
+            if (jQuery.inArray(id, infoWindowsReference) === -1) {
                 infowindow.open(map, marker);
                 //setTimeout(function () { infowindow.close(); }, 3000);
                 infoWindowsReference.push(id);
@@ -122,7 +129,7 @@ function createMarker(map, location, fromDefault) {
         });
     }
     markers.push(marker);
-    if (selectedLocation != null && selectedLocation != 'undefined' && selectedLocation == marker.metadata.id) {
+    if (selectedLocation !== null && selectedLocation !== 'undefined' && selectedLocation === marker.metadata.id) {
         marker.setAnimation(google.maps.Animation.BOUNCE);
         createInfoWindowForMarker(marker);
         map.setCenter(marker.getPosition());

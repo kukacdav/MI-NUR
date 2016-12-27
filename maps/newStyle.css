@@ -8,13 +8,13 @@
 }
 
 .orange {
-	background-color: #e36a5c;
-	border-radius: 5px;
-	list-style-type: none;
-	display: inline;
-	margin-right: 10px; 
-	font-family: 'Segoe UI';
-	color: white;
+    background-color: rgba(64,64,64,0.2);
+    border-radius: 5px;
+    list-style-type: none;
+    display: inline;
+    margin-right: 10px;
+    font-family: 'Segoe UI';
+    color: #e36a5c;
 }
 
 .orange:hover {
@@ -29,20 +29,14 @@
 
 
 #horizontalMenu {
-	margin: auto;
-	margin-top: 40px;
-	text-align: center;
-	
+    text-align: center;
+    float: left;
 }
 
 #leftMenu {
-	position: fixed;
-	top: 7%;
-	left: 80%;
-	background: rgba(64,64,64,0.2);
-	padding-left: 20px;
-		border-radius: 5px;
-
+    float: left;
+    background: rgba(229, 229, 229, 0.64);
+    border-radius: 5px;
 }
 
 .leftMenu ul {
@@ -55,8 +49,6 @@ list-style-type: none !important;
 	font-family: 'Segoe UI' !important;
 	color: #737373 !important;
 	font-size: 1em;
-	background-image: "./img/calendar-active.png";
-	margin-right: 10px;
 }
 
 

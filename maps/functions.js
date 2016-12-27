@@ -13,12 +13,11 @@
     }
 };
 
-function showDialog(divId)
-{
+function showDialog(divId) {
     clearInfoWindows();
     var inners = $(".dialogInner");
     $.each(inners, function (index, value) {
-        if (! $(value).parent().hasClass("wrapDiv")) {
+        if (!$(value).parent().hasClass("wrapDiv")) {
             $(value).remove();
         }
     });
@@ -34,14 +33,12 @@ function showDialog(divId)
     return inner;
 }
 
-function showLocationDialog(divId, id)
-{
+function showLocationDialog(divId, id) {
     var inner = showDialog(divId);
     locationFunction(inner, id);
 }
 
-function remove(link)
-{
+function remove(link) {
     $(link).parent().parent().remove();
 }
 
@@ -50,7 +47,7 @@ function readTextFile(file) {
     rawFile.open("GET", file, false);
     rawFile.onreadystatechange = function () {
         if (rawFile.readyState === 4) {
-            if (rawFile.status === 200 || rawFile.status == 0) {
+            if (rawFile.status === 200 || rawFile.status === 0) {
                 var allText = rawFile.responseText;
                 alert(allText);
             }
@@ -77,28 +74,26 @@ $(function () {
     //}
 })
 
-function showMessageDialog(div)
-{
+function showMessageDialog(div) {
     var inner = showDialog(div);
     $(inner).load("file:///yC:/Users/mroubicek/Downloads/maps/html/maps(1)/maps/maps/messageBox/messagingList.html", function (response, status, xhr) {
-        if (status == "error") {
+        if (status === "error") {
             var msg = "Sorry but there was an error: ";
             $(inner).html(msg + xhr.status + " " + xhr.statusText);
         }
     });
 }
 
-function locationFunction(div, id)
-{
+function locationFunction(div, id) {
     var tmpIndex = -1;
     $.each(defaultLocations, function (index, value) {
-        if (id == value.id) {
+        if (id === value.id) {
             tmpIndex = index;
         }
     });
-    if (tmpIndex != -1) {
+    if (tmpIndex !== -1) {
         $(div).find("#locationName").text(defaultLocations[tmpIndex].name);
-        var authorlink = $("<a href='#user' onclick=\"showDialog('user" + (id % 3 + 1 ) + "Div')\">" + defaultLocations[tmpIndex].autor + "<a>");
+        var authorlink = $("<a href='#user' onclick=\"showDialog('user" + (id % 3 + 1) + "Div')\">" + defaultLocations[tmpIndex].autor + "<a>");
         var autor = $(div).find("#autor");
         authorlink.appendTo(autor);
         $(div).find("#showOnMap").attr("href", "map.html?id=" + defaultLocations[tmpIndex].id);
@@ -107,13 +102,24 @@ function locationFunction(div, id)
     }
 }
 
-function createLocationList()
-{
+function createLocationList() {
     var table = $("t01");
     $.each(defaultLocations, function (index, value) {
         var tr = $('<tr></tr>');
-        if (id == value.id) {
+        if (id === value.id) {
             tmpIndex = index;
         }
     });
+}
+
+function openSidebar(fileName, path) {
+    var delay = $("#st-container").hasClass("st-menu-open") ? 450 : 0;
+    setTimeout(function () {
+        $(".st-menu").load((path === null ? 'dialogFiles/' : (path + '/')) + fileName + '.html', function (responseTxt, statusTxt, xhr) {
+            //if (statusTxt == "success")
+            //    alert("External content loaded successfully!");
+            //if (statusTxt == "error")
+            //    alert("Error: " + xhr.status + ": " + xhr.statusText);
+        });
+    }, delay);
 }

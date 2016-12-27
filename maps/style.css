@@ -12,12 +12,13 @@ h3,h2, a h3, a h2 {
     text-decoration: none;
 }
 
-html, body {
+body {
     height: 100%;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     font-family: 'Segoe UI';
 	color: #737373;
+    overflow: hidden;
 }
 
 table{
@@ -80,9 +81,14 @@ a.button {
 }
 
 menu {
-     overflow: hidden;
-    position: fixed; 
     z-index: 20;
+    height: 10%;
+    padding: 15px;
+    position: absolute;
+}
+
+content {
+    top: 10%;
 }
 
 button {
@@ -97,8 +103,8 @@ menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    position: fixed;
+    
+    /*position: fixed;*/
     top: 4%; /* Position the navbar at the top of the page */
     left: 30%;
 }
@@ -111,16 +117,45 @@ menu li {
     float: left;
 }
 
-menu li a {
-    display: block;
-    color: white;
-    padding: 16px;
-    text-decoration: none;
-}
+    menu li a {
+        display: block;
+        color: #e36a5c;
+        padding: 10px;
+        font-weight: normal;
+        text-decoration: none;
+    }
 
 img.logo {
+    position: absolute;
+    z-index: 100;
     float: left;
-    max-width: 40%;
-	padding-top: 25px;
+    max-width: 20%;
+    bottom: 0px;
 }
 
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        left: 50%;
+        margin-left: -60px;
+    }
+
+/* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
