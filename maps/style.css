@@ -6,9 +6,9 @@
     font-family: 'Segoe UI';
 }
 
-h3,h2, a h3, a h2 {
+h3, h2, a h3, a h2 {
     font-family: 'Segoe UI';
-	color: #737373;
+    color: #737373;
     text-decoration: none;
 }
 
@@ -17,20 +17,20 @@ body {
     margin: 0px;
     padding: 0px;
     font-family: 'Segoe UI';
-	color: #737373;
+    color: #737373;
     overflow: hidden;
 }
 
-table{
+table {
     border: 2px solid black;
     border-collapse: collapse;
-
 }
 
 #showInfoDialog {
     visibility: hidden;
     display: none;
 }
+
 #createDialog {
     visibility: hidden;
     display: none;
@@ -39,7 +39,7 @@ table{
 .dialogInner {
     border: 1px solid black;
     padding: 20px;
-  box-shadow: 5px 5px #666;
+    box-shadow: 5px 5px #666;
     z-index: 200;
     background-color: white;
     width: 80%;
@@ -71,13 +71,11 @@ a.button {
     -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
-
     text-decoration: none;
     cursor: default;
     font-family: 'Segoe UI';
     font-size: 12px;
     padding: 1px 6px;
-
 }
 
 menu {
@@ -92,7 +90,7 @@ content {
 }
 
 button {
-        text-decoration: none;
+    text-decoration: none;
     cursor: default;
     font-family: 'Segoe UI' !important;
     font-size: 12px;
@@ -103,14 +101,13 @@ menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    
     /*position: fixed;*/
     top: 4%; /* Position the navbar at the top of the page */
     left: 30%;
 }
+
 .messageBox p {
     color: white !important;
-
 }
 
 menu li {
@@ -129,7 +126,7 @@ img.logo {
     position: absolute;
     z-index: 100;
     float: left;
-    max-width: 20%;
+    max-width: 10%;
     bottom: 0px;
 }
 
@@ -138,7 +135,7 @@ img.logo {
     display: inline-block;
 }
 
-/* Tooltip text */
+    /* Tooltip text */
     .tooltip .tooltiptext {
         visibility: hidden;
         width: 120px;
@@ -155,7 +152,79 @@ img.logo {
         margin-left: -60px;
     }
 
-/* Show the tooltip text when you mouse over the tooltip container */
+    /* Show the tooltip text when you mouse over the tooltip container */
     .tooltip:hover .tooltiptext {
         visibility: visible;
     }
+
+.locationBox * {
+    font-family: 'Segoe UI';
+    opacity: 1;
+    transition: opacity 5s;
+}
+
+.locationBox {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.locationBox-header {
+    padding: 15px;
+}
+
+.locationBox-header-name span{
+    box-shadow: inset 0 -1px rgba(0,0,0,0.2);
+    color: #e36a5c;
+    text-transform: uppercase;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    letter-spacing: 1px;
+    font-weight: 400;
+    -webkit-transition: background 0.3s, box-shadow 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.locationBox-content-image-inner {
+    width: 80%;
+}
+
+
+locationBox-content-info {
+    float: left;
+    border: 1px solid black;
+    max-width: 190px;
+}
+
+.locationBox-footer {
+    width: 100%;
+    padding: 15px;
+}
+
+.locationBox-content {
+    width: 100%;
+    padding: 15px;
+}
+
+.locationBox-image {
+    width: 100%;
+    box-shadow: 5px 5px 5px #888888;
+}
+.locationBox-header-author span {
+    font-style: italic;
+    font-size: 0.8em;
+    float: left;
+}
+
+
+.locationBox-content-image {
+    width: 10%;
+    float: left;
+    min-width: 200px;
+}
+
+.locationBox .left {
+    float: left;
+}

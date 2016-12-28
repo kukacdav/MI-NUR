@@ -33,56 +33,30 @@ function showDialog(divId) {
     return inner;
 }
 
-function showLocationDialog(divId, id) {
-    var inner = showDialog(divId);
-    locationFunction(inner, id);
+function resetMenu() {
+    $('#st-container').removeClass("st-menu-open");
+}
+
+function bodyClickFn(evt) {
+    resetMenu();
+    $(".st-menu").off(eventtype, bodyClickFn);
+};
+
+function showLocationDialog(effect, id) {
+    var container = $("#st-container");
+    var delay = container.hasClass("st-menu-open") ? 450 : 0;
+    container.removeClass('st-menu-open');
+    container.addClass(effect);
+    setTimeout(function () { container.addClass('st-menu-open'); }, delay);
+    openSidebar('locationDetail', null, id);
+    $(".st-menu").on('dblclick', bodyClickFn);
+    
 }
 
 function remove(link) {
     $(link).parent().parent().remove();
 }
 
-function readTextFile(file) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function () {
-        if (rawFile.readyState === 4) {
-            if (rawFile.status === 200 || rawFile.status === 0) {
-                var allText = rawFile.responseText;
-                alert(allText);
-            }
-        }
-    }
-    rawFile.send(null);
-}
-
-$(function () {
-    //var id = getUrlParameter('id');
-    //var tmpIndex = -1;
-    //$.each(defaultLocations, function (index, value) {
-    //    if (id == value.id)
-    //    {
-    //        tmpIndex = index;
-    //    }
-    //});
-    //if (tmpIndex != -1) {
-    //    $("#locationName").text(defaultLocations[tmpIndex].name);
-    //    $("#autor").text(defaultLocations[tmpIndex].autor);
-    //    $("#showOnMap").attr("href", "map.html?id=" + defaultLocations[tmpIndex].id);
-    //    $("#location").text("(" + defaultLocations[tmpIndex].lat + "," + defaultLocations[tmpIndex].long + ")");
-    //    $("#image").find("img").attr("src", defaultLocations[tmpIndex].img);
-    //}
-})
-
-function showMessageDialog(div) {
-    var inner = showDialog(div);
-    $(inner).load("file:///yC:/Users/mroubicek/Downloads/maps/html/maps(1)/maps/maps/messageBox/messagingList.html", function (response, status, xhr) {
-        if (status === "error") {
-            var msg = "Sorry but there was an error: ";
-            $(inner).html(msg + xhr.status + " " + xhr.statusText);
-        }
-    });
-}
 
 function locationFunction(div, id) {
     var tmpIndex = -1;
@@ -97,27 +71,23 @@ function locationFunction(div, id) {
         var autor = $(div).find("#autor");
         authorlink.appendTo(autor);
         $(div).find("#showOnMap").attr("href", "map.html?id=" + defaultLocations[tmpIndex].id);
-        $(div).find("#location").text("(" + defaultLocations[tmpIndex].lat + "," + defaultLocations[tmpIndex].long + ")");
+        $(div).find("#location").text("(" + defaultLocations[tmpIndex].lat + ";" + defaultLocations[tmpIndex].long + ")");
         $(div).find("#image").find("img").attr("src", defaultLocations[tmpIndex].img);
     }
 }
 
-function createLocationList() {
-    var table = $("t01");
-    $.each(defaultLocations, function (index, value) {
-        var tr = $('<tr></tr>');
-        if (id === value.id) {
-            tmpIndex = index;
-        }
-    });
-}
-
-function openSidebar(fileName, path) {
-    var delay = $("#st-container").hasClass("st-menu-open") ? 450 : 0;
+function openSidebar(fileName, path, id) {
+    var delay = $("#st-container").hasClass("st-menu-open") ? 475 : 0;
     setTimeout(function () {
-        $(".st-menu").load((path === null ? 'dialogFiles/' : (path + '/')) + fileName + '.html', function (responseTxt, statusTxt, xhr) {
-            //if (statusTxt == "success")
-            //    alert("External content loaded successfully!");
+        var content = $(".st-menu");
+        content.load((path == null ? 'dialogFiles/' : (path + '/')) + fileName + '.html', function (responseTxt, statusTxt, xhr) {
+            if (statusTxt == "success")
+            {
+                if (id != null)
+                {                    
+                    locationFunction(content, id);
+                }
+            }
             //if (statusTxt == "error")
             //    alert("Error: " + xhr.status + ": " + xhr.statusText);
         });

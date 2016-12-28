@@ -106,6 +106,9 @@ body,
     list-style: none;
 }
 
+.st-menu li {
+}
+
 .st-menu h2, .st-menu h1 {
     margin: 0;
     color: rgba(0,0,0,0.4);
@@ -121,8 +124,66 @@ body,
     font-size: 1.5em;
 }
 
-.st-menu ul li a {
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content-inner {
+    display: none;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
     display: block;
+    width: 100%;
+}
+
+.tags a.category {
+    padding: 1em 1em 1em 1.2em;
+    color: #e36a5c;
+    text-transform: uppercase;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-size: 0.7em;
+    text-decoration: none;
+    width:auto;
+    box-shadow: none;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover > .dropdown-content {
+    display: block;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown-content:hover > .dropdown-content-inner {
+    display: inline-block;
+}
+
+
+
+.st-menu ul li a {
+    display: inline-block;
     padding: 1em 1em 1em 1.2em;
     outline: none;
     box-shadow: inset 0 -1px rgba(0,0,0,0.2);
@@ -133,11 +194,47 @@ body,
     font-weight: 400;
     -webkit-transition: background 0.3s, box-shadow 0.3s;
     transition: background 0.3s, box-shadow 0.3s;
+    font-size: 0.7em;
+    width: 100%;
 }
 
-.st-menu ul li:first-child a {
-    box-shadow: inset 0 -1px rgba(0,0,0,0.2), inset 0 1px rgba(0,0,0,0.2);
+.st-menu ul li span.menu {
+    display: inline-block;
+    padding: 1em 1em 1em 1.2em;
+    outline: none;
+    box-shadow: inset 0 -1px rgba(0,0,0,0.2);
+    color: #e36a5c;
+    text-transform: uppercase;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    letter-spacing: 1px;
+    font-weight: 400;
+    -webkit-transition: background 0.3s, box-shadow 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
+    font-size: 0.7em;
+    cursor:default;
 }
+
+.st-menu ul li span.menu-inner {
+    display: inline-block;
+    padding: 1em 1em 1em 1.2em;
+    outline: none;
+    color: #e36a5c;
+    text-transform: uppercase;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    font-size: 0.7em;
+    cursor: default;
+}
+
+.st-menu ul#locations li {
+    width: 100%;
+}
+
+.st-menu ul li span.menu:hover {
+    background: rgba(0,0,0,0.2);
+    box-shadow: inset 0 -1px rgba(0,0,0,0);
+    color: #fff;
+}
+
 
 .st-menu ul li a:hover {
     background: rgba(0,0,0,0.2);

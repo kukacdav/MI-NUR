@@ -1,7 +1,7 @@
 ﻿function initMap() {
 
     var id = getUrlParameter('id');
-    
+
     if (id !== undefined) {
         selectedLocation = id;
     }
@@ -21,14 +21,42 @@
     google.maps.event.addListener(map, 'dblclick', function (event) {
         resetMenu();
     });
+
+    google.maps.event.addListener(map, 'dragend', function (event) {
+        if ($('#st-container').hasClass("st-menu-open")) {
+            getVisibleMarkers();
+        }
+    });
+
+    google.maps.event.addListener(map, 'zoom_changed', function (event) {
+        if ($('#st-container').hasClass("st-menu-open")) {
+            getVisibleMarkers();
+        }
+    });
 }
+
+function getVisibleMarkers() {
+    var ids = [];
+    var mapBounds = map.getBounds();
+    // For overlay element
+    mapBounds.b.f = mapBounds.b.f - ((mapBounds.b.f - mapBounds.b.b) * 0.35);
+    for (var i = 0; i < markers.length; i++) {
+        if (mapBounds.contains(markers[i].getPosition())) {
+            // myMarkers[i] is anchored to a point within the map's current  bounds
+            ids.push(markers[i].metadata.id);
+        };
+    }
+    if (typeof getByVisible !== 'undefined' && $.isFunction(getByVisible)) {
+        getByVisible(ids);
+    }
+}
+
 var selectedLocation;
 var infoWindowsReference = [];
 var infoWindows = [];
 var markers = [];
 
-function resetMenu()
-{
+function resetMenu() {
     $('#st-container').removeClass("st-menu-open");
 }
 
@@ -44,8 +72,7 @@ function toggleBounce(marker) {
     }
 }
 
-function clearInfoWindows()
-{
+function clearInfoWindows() {
     $.each(infoWindows, function (index, value) {
         value.close();
     });
@@ -72,7 +99,10 @@ function createInfoWindowForMarker(marker) {
     var html = $("#showInfoDialog").clone();
     $(html).find(".autor").html(defaultLocations[id].autor);
     $(html).find(".nazev").html(defaultLocations[id].name);
-    $(html).find(".target").attr("onclick", "showLocationDialog('locationDiv'," + id + ");");
+    var target = $(html).find(".target");
+
+    target.attr("onclick", "showLocationDialog('" + target.attr('data-effect') + "'," + id + ");");
+
     $(html).find(".image").find("img").attr("src", defaultLocations[id].img);
     $.each(defaultLocations, function (index, value) {
         if (value.id === id) {
@@ -129,7 +159,7 @@ function createMarker(map, location, fromDefault) {
         });
     }
     markers.push(marker);
-    if (selectedLocation !== null && selectedLocation !== 'undefined' && selectedLocation === marker.metadata.id) {
+    if (selectedLocation != null && selectedLocation != 'undefined' && selectedLocation == marker.metadata.id) {
         marker.setAnimation(google.maps.Animation.BOUNCE);
         createInfoWindowForMarker(marker);
         map.setCenter(marker.getPosition());
