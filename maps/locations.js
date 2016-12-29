@@ -1,7 +1,7 @@
 $(function () {
     //getLocationList("autor", filterByGuide, 1);
     //getLocationList(undefined, undefined, undefined, undefined, 0,3);
-    getVisibleMarkers();
+    //getVisibleMarkers();
 });
 
 $(function () {
@@ -170,7 +170,20 @@ function getLocationList(sort, asc, filterFunction, parameter, bottom, top) {
 }
 
 function fillLocation(container, data) {
-    container.find(".auth").text(data.autor);
+
+    var url;
+    $.each(defaultGuides, function (index, value) {
+        if (value.name == data.autor)
+        {
+            url = value.url;
+        }
+    });
+    if (url == undefined)
+    {
+        url = "user1";
+    }
+
+    container.find(".auth").html("<a class='category' href='#' onclick='openSidebar(\"" + url +"\")'>" + data.autor + "</a>");
     container.find(".name").text(data.name);
     container.find(".name").attr('onclick',"showLocationDialog('st-effect-3',"+ data.id+");");
     container.find(".img").attr("src", data.img);

@@ -40,7 +40,7 @@ q {
 #leftMenu {
     float: left;
     background: rgba(229, 229, 229, 0.64);
-    border-radius: 5px;
+    border-radius: 300px;
 }
 
 .leftMenu ul {

@@ -59,6 +59,11 @@ q {
     font-size: 80%;
 }
 
+img.thumbnail-mini {
+    width: 120px;
+    margin: 5px;
+}
+
 img.thumbnail {
     width: 300px;
 }
@@ -147,7 +152,7 @@ img.logo {
         /* Position the tooltip */
         position: absolute;
         z-index: 1;
-        top: 100%;
+        top: 110%;
         left: 50%;
         margin-left: -60px;
     }
@@ -227,4 +232,215 @@ locationBox-content-info {
 
 .locationBox .left {
     float: left;
+}
+
+#locationDetail #actions 
+{
+    float: left;
+    margin-top: 10px;
+}
+
+#locationDetail #coordinatesContent {
+    float: left;
+}
+
+#locationDetail #ratingContent {
+    float: right;
+}
+
+.galleryImages {
+
+}
+p {
+    text-align: justify;
+}
+
+#infoContent {
+    width: 100%;
+}
+
+#infoContent #categoryContent{
+    float: left;
+    width: 100%;
+}
+
+#descriptionContent {
+    padding-right: 15px;
+}
+#locationDetail .detailContent {
+    float: left;
+}
+
+#locationDetail a.guides {
+    color: #5c88e3;
+    text-transform: uppercase;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-size: 0.7em;
+    text-decoration: none;
+    width: auto;
+    box-shadow: none;
+    margin-right: 8px;
+}
+
+.comment {
+    width: 100%;
+    float: left;
+    padding-left: 5px;
+    padding-right: 15px;
+    box-shadow: inset 0 -1px rgba(0,0,0,0.2);
+}
+
+.comment p:not(.messageInfo) {
+    text-align: justify;
+    font-size: 0.9em;
+    float: left;
+    width: 100%;
+}
+
+.comment p:not(.messageInfo) strong {
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.comment .sender {
+    float: left;
+    width: 50%;
+}
+
+.comment .messageDate {
+    float: left;
+    font-size: 0.7em;
+    margin-bottom: 10px;
+    width: 50%;
+}
+
+.comment .rating {
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
+.comment textarea {
+    width: 96%;
+    height: 100px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    margin: 5px 10px;
+    overflow: hidden;
+}
+
+.comment  button {
+    padding: 5px;
+    background: #ccc;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+.comment input, .comment select {
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+.comment .sendMessage {
+    border-radius: 30px;
+    width: 100%;
+    float: left;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.actionLink {
+    position: relative;
+    display: inline-block;
+}
+
+
+
+.bookLocation {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.bookLocation-content {
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    top: 110%;
+    left: 0px;
+    width: 405px;
+    padding: 15px;
+}
+
+.bookLocation-content div{
+    margin: 2px;
+    padding: 2px;
+}
+
+.bookLocation-content input {
+    margin: 2px;
+    padding: 2px;
+}
+
+
+.calendarEntry {
+    background: rgba(160,160,160,0.2);
+    border-radius: 4px;
+    padding: 5px;
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 3px;
+}
+
+.calendarEntry a {
+    
+    color: #5c88e3;
+    text-transform: uppercase;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-size: 0.9em;
+    text-decoration: none;
+    width: auto;
+    box-shadow: none;
+    margin-right: 8px;
+}
+
+.calendarEntry p {
+    text-align: left;
+    font-size: 0.8em;
+}
+
+.block-a {
+    float: left;
+    width: 20%;
+}
+
+.block-b {
+    float: left;
+    width: 60%;
+}
+
+.block-c {
+    float: right;
+    width: 20%;
 }

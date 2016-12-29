@@ -39,7 +39,7 @@ function getVisibleMarkers() {
     var ids = [];
     var mapBounds = map.getBounds();
     // For overlay element
-    mapBounds.b.f = mapBounds.b.f - ((mapBounds.b.f - mapBounds.b.b) * 0.35);
+    //mapBounds.b.f = mapBounds.b.f - ((mapBounds.b.f - mapBounds.b.b) * 0.35);
     for (var i = 0; i < markers.length; i++) {
         if (mapBounds.contains(markers[i].getPosition())) {
             // myMarkers[i] is anchored to a point within the map's current  bounds
@@ -160,11 +160,27 @@ function createMarker(map, location, fromDefault) {
     }
     markers.push(marker);
     if (selectedLocation != null && selectedLocation != 'undefined' && selectedLocation == marker.metadata.id) {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-        createInfoWindowForMarker(marker);
-        map.setCenter(marker.getPosition());
+        displayMarker(marker);
     }
     return marker;
+}
+
+function displayOnMap(id)
+{
+    var marker;
+    $.each(markers, function (index, value) {
+        if (value.metadata.id == id)
+            marker = value;
+    });
+    resetMenu();
+    displayMarker(marker);
+}
+
+function displayMarker(marker)
+{
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    createInfoWindowForMarker(marker);
+    map.setCenter(marker.getPosition());
 }
 
 var markerCounter = 0;

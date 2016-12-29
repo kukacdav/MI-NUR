@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="newStyle.css">
     <link rel="stylesheet" type="text/css" href="component.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script src="jquery.number.js"></script>
@@ -25,8 +26,8 @@
                         <li class="leftMenuItem"><a data-effect="st-effect-3" onclick="openSidebar('contacts')" class="tooltip"><span class="tooltiptext">Kontakty</span><img src="./img/contacts-big.png" /></a></li>
                         <li class="leftMenuItem"><a data-effect="st-effect-3" onclick="openSidebar('businessConditions')" class="tooltip"><span class="tooltiptext">Obchodní podmínky</span><img src="./img/conditions-big.png" /></a></li>
                         <li class="leftMenuItem"><a data-effect="st-effect-3" onclick="openSidebar('aboutUs')" class="tooltip"><span class="tooltiptext">O nás</span><img src="./img/about-big.png" /></a></li>
-                        <li class="leftMenuItem"><a data-effect="st-effect-3" onclick="openSidebar('locations')" class="tooltip"><span class="tooltiptext">Seznam lokalit</span><img src="./img/location-big.png" /></a></li>
-                        <li class="leftMenuItem"><a data-effect="st-effect-3" onclick="openSidebar('calendar')" class="tooltip"><span class="tooltiptext">Kalendář</span><img src="./img/calendar-big.png" /></a></li>
+                        <li class="leftMenuItem"><a data-effect="st-effect-3" onclick="openSidebar('locations', null, null, getVisibleMarkers)" class="tooltip"><span class="tooltiptext">Seznam lokalit</span><img src="./img/location-big.png" /></a></li>
+                        <li class="leftMenuItem"><a data-effect="st-effect-3" onclick="openSidebar('calendar'); removeNew()" class="tooltip"><span class="tooltiptext">Kalendář</span><img src="./img/calendar-big.png" id="calendar-menu-item"/></a></li>
                         <li class="leftMenuItem"><a data-effect="st-effect-3" onclick="openSidebar('user1')" class="tooltip"><span class="tooltiptext">Profil</span><img src="./img/profile-big.png" /></a></li>
                         <li class="leftMenuItem"><a data-effect="st-effect-3" onclick="openSidebar('messages')" class="tooltip"><span class="tooltiptext">Notifikace</span><img src="./img/notifications-big.png" /></a></li>
                     </ul>
@@ -37,8 +38,6 @@
             </nav>
             <!--<div class="st-pusher">-->
             <div class="st-content">
-
-
                 <div class="st-content-inner">
                     <div id="map"></div>
 
@@ -71,47 +70,7 @@
                                 <input class="save" type="submit" value="Uložit">
                             </form>
                         </div>
-                    </div>
-                    
-                    <div id="user2Div" class="wrapDiv">
-                        <div id="user2DivInner" class="dialogInner">
-                            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
-                            <h1>Chuck Norris</h1>
-                            <ul>
-                                <p><img src="img/chuck.jpg" style="float:right;width:300px">
-                                <li> id uživatele - <b>chucknor</b> </li>
-                                <li> věk - ??? </li>
-                                <li> bydliště - Praha </li>
-                                <li> hodnocení - 55/5 </li>
-                                <li>jazyky - CZ,EN,RU </li>
-                                </p>
-                                <h2>BIO</h2>
-                                <p>
-                                    Proin sed lobortis odio, in sagittis turpis. Morbi id pellentesque sem. Sed quis nisi sed purus lacinia tempor. Aenean gravida lorem in metus molestie, facilisis ornare risus varius. Aliquam in turpis eu purus interdum lacinia. In ornare libero nec augue auctor, eget vulputate elit sollicitudin. Donec pulvinar, nunc et sollicitudin semper, diam turpis vestibulum neque, sed tempus urna turpis blandit leo. Duis pharetra ac enim nec pulvinar. Integer non velit fermentum, feugiat purus quis, semper quam. Cras non magna molestie, euismod massa ut, semper mi. In elit lorem, aliquam ac varius ac, porttitor vitae felis. Quisque consequat lectus risus, non interdum nisi bibendum vitae. Nunc id lectus sem.
-                                </p>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div id="user3Div" class="wrapDiv">
-                        <div id="user3DivInner" class="dialogInner">
-                            <div style="float: right;"><a style="text-decoration: none" href="#" onclick="remove(this)">X</a></div>
-                            <h1>Arnold Schwarzenegger</h1>
-                            <ul>
-                                <p><img src="img/arnold.jpg" style="float:right;width:300px">
-                                <li> id uživatele - <b>terminator2</b> </li>
-                                <li> věk - 55 </li>
-                                <li> bydliště - Prague </li>
-                                <li> hodnocení - 1/5 </li>
-                                <li>jazyky - CZ, DE </li>
-                                </p>
-                                <h2>BIO</h2>
-                                <p>
-                                    Proin sed lobortis odio, in sagittis turpis. Morbi id pellentesque sem. Sed quis nisi sed purus lacinia tempor. Aenean gravida lorem in metus molestie, facilisis ornare risus varius. Aliquam in turpis eu purus interdum lacinia. In ornare libero nec augue auctor, eget vulputate elit sollicitudin. Donec pulvinar, nunc et sollicitudin semper, diam turpis vestibulum neque, sed tempus urna turpis blandit leo. Duis pharetra ac enim nec pulvinar. Integer non velit fermentum, feugiat purus quis, semper quam. Cras non magna molestie, euismod massa ut, semper mi. In elit lorem, aliquam ac varius ac, porttitor vitae felis. Quisque consequat lectus risus, non interdum nisi bibendum vitae. Nunc id lectus sem.
-                                </p>
-                            </ul>
-                        </div>
-                    </div>
+                    </div>                    
                 </div>
                 <!--</div>-->
             </div>
@@ -123,6 +82,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqjyKJybEpyt3TQ5T1FjdKWZ0A1prPlxw&callback=initMap"></script>
     <script src="classie.js"></script>
     <script src="sidebarEffects.js"></script>
-
+    <script src="bookings.js"></script>
 </body>
 </html>

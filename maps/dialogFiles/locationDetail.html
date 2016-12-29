@@ -1,14 +1,142 @@
-﻿<div>
-    <h1><span id="locationName"></span></h1>
-    <div id="autor"></div>
-    <q id="location"></q>
-
-    <div class="data">
-        <span id="image"><img class="thumbnail" /></span>
+﻿<div id="locationDetail">
+    <div id="nameContent">
+        <h1><span id="locationName"></span></h1>
     </div>
+    <div id="authorContent">
+        <a id="autor"></a>
+    </div>
+    <div id="infoContent">
+        <div id="coordinatesContent">
+            <q id="location"></q>
+        </div>
+        <div id="ratingContent">
 
-    <button type="button" class="button">Přihlásit se</button>
-    <button type="button" class="button" onclick="showDialog('messagesDiv')">Poslat dotaz</button>
-    <a id="showOnMap" class="button">Zobrazit na mapě</a>
+        </div>
+        <div id="categoryContent">
+            <span>Kategorie</span>
+            <span class=" tags">
+
+            </span>
+        </div>
+    </div>
+    <div id="actions">
+        <ul>
+            <li class="actionLink">
+                <a class="actionLink-item tooltip bookLocation"><span class="tooltiptext">Vyberte si vhodný termín a dejte o svém zájmu vědět průvodci</span>Přihlásit se</a>
+                <div class="bookLocation-content" style="display:none">
+
+                    <div style="width: 100%">
+                        <span style="float:left">Datum</span>
+                        <input id="booking-date" type="text">
+                    </div><div style="width: 100%">
+                        <span style="float:left">Průvodce</span>
+                        <select id="booking-person">
+                            <option value="Arnie">Arnie</option>
+                            <option value="Chuck">Chuck</option>
+                            <option value="Ječmínek">Ječmínek</option>
+                            <option value="Author">Author</option>
+                        </select>
+                    </div>
+                    <div style="width: 100%">
+                        <span style="float:left">Poznámka</span>
+                        <textarea cols="30" rows="5" id="booking-note"></textarea>
+                    </div>
+                    <div style="width: 100%">
+                        <button value="Odeslat" id="bookLocationSend">Odeslat</button>
+                    </div>
+
+                </div>
+            </li>
+            <li class="actionLink">
+                <a class="actionLink-item tooltip" onclick="openSidebar('newMessage')"><span class="tooltiptext">Není vám něco jasné? Zeptejte se přímo autora</span>Poslat dotaz</a>
+            </li>
+            <li class="actionLink">
+                <a class="actionLink-item tooltip displayOnMap"><span class="tooltiptext">Zobrazit lokalitu na mapě</span>Zobrazit na mapě</a>
+            </li>
+            <li class="actionLink">
+                <a class="actionLink-item" onclick="openSidebar('locations', null, null, getVisibleMarkers)">Seznam lokalit</a>
+            </li>
+        </ul>
+    </div>
+    <div class="detailContent">
+        <div id="descriptionContent">
+            <div id="descriptionName">
+                <h2>Popis</h2>
+            </div>
+            <div id="description">
+
+            </div>
+        </div>
+        <div id="guidesContent">
+            <div id="guidesName">
+                <h2>Průvodci</h2>
+            </div>
+            <div class="guidesList">
+
+            </div>
+        </div>
+        <div id="galleryContent">
+            <div id="galleryName">
+                <h2>Fotogalerie</h2>
+            </div>
+            <div class="galleryImages">
+                <div class="images">
+
+                </div>
+            </div>
+        </div>
+        <div id="discussionContent">
+            <div id="discussionName">
+                <h2>Komentáře</h2>
+            </div>
+            <div class="comment">
+                <div>
+                    <div id="messageBox">
+                        <div class="incomingMessage">
+
+                        </div>
+                    </div>
+                    <script src="comments.js"></script>
+                    <script src="commentsFunctions.js"></script>
+                    <div id="newComment">
+                        <div style="float: left; margin-top: 20px">
+                            <h2>Přidat hodnocení</h2>
+                        </div>
+                        <form class="sendMessage">
+                            <div style="float:left; width:60%">
+                                <span style="float:left">Předmět:</span><input name="predmet" size="47" style="float: left;width: 90%;" id="header" />
+                            </div>
+                            <div style="float:left; width:5%"></div>
+                            <div style="float:left; width:25%">
+                                <span style="float:left">
+                                    Hodnocení:
+                                </span>
+                                <select id="ratingCount" style="float:left">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div style="float:left; width:100%">
+                                Zpráva: <textarea name="zprava" rows="4" cols="30" style="float: right" id="newMessage"></textarea>
+                            </div>
+                            <br><br><br><br>
+                            <button type="button" onclick="insertComment($('#newMessage').val(),$('#header').val(),$('#ratingCount option:selected').val());" style="float: right">Odeslat </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br /><br />
+    </div>
 </div>
-<button type="button" class="button" onclick="showDialog('tableDiv')">Seznam lokalit</button>
+
+<script>
+    $(function () {
+        $("#booking-date").datepicker($.datepicker.regional["cs-CZ"]);
+        $("#booking-date").datepicker("option", "dateFormat", "dd.mm.yy")
+    });
+</script>
