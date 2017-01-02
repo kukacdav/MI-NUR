@@ -1,11 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\maps",
-    "\\maps\\calendar",
-    "\\maps\\dialogFiles",
-    "\\maps\\messageBox"
+    "\\maps"
   ],
-  "SelectedNode": "\\maps\\newStyle.css",
+  "SelectedNode": "\\maps\\bookingsFunctions.js",
   "PreviewInSolutionExplorer": false
 }

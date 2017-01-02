@@ -72,6 +72,7 @@ function insertBooking(date, name, id, person, note) {
             "name": name,
             "person": person,
             "note": note,
+            "state": "Čeká na schválení",
             "novy": 1
         });
     $("#calendar-menu-item").attr("src", "./img/calendar-big-new.png");
@@ -155,6 +156,14 @@ function locationFunction(div, id) {
         }
         container.find("#ratingContent").html("Hodnocení: " + imageStr);
     }
+}
+
+function addGuide()
+{
+    var guideStr = "<a href='#' class='guides' style='margin-right: 8px;' onclick=\"openSidebar('" + "user1" + "')\">" + "HASELHOFF" + "</a>";   
+    
+    $("#locationDetail").find(".guidesList").append(guideStr);
+    $("#locationDetail").find(".signin").remove();
 }
 
 function openSidebar(fileName, path, id, afterCall, parameter) {
