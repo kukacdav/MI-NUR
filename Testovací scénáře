@@ -1,0 +1,29 @@
+1.
+
+- uživatel se přihlásí
+- uživatel nalezne rozhlednu hýlačka
+- uživatel si vybere z průvodců a zkontroluje, zda tento průvodce má čas 13.1.2017
+- uživatel si zarezervuje průvodce a pošle mu zprávu
+- uživatel si zjistí stav své prohlídky (čeká na schválení, schválená...) - takovou věc uvidí buď v kalendáři nebo v notifikacích
+*****
+- po prohlídce (simulovaně) ohodnotí výkon průvodce, přidá u komentář a přidá fotku k Hýlačce
+
+
+2. 
+- uživatel se přihlásí
+- uživatel se pokusí najít Kotnovskou věž
+ - pokud nalezl, přidá svojí fotku 
+ - pokud nenalezl, zaregistruje novou lokaci
+
+3.
+- uživatel se přihlásí
+- uživatel byl spokojený s prohlídkou, která proběhla 10.12.2016
+- uživatel si nepamatuje jméno průvodce, ale chtěl by s ním znovu na prohlídku jiné lokace
+- Uživatel nalezne průvodce a smluví s ním novou prohlídku jako v bodě 1.
+
+4.
+- uživatel se přihlásí
+- uživatel zkontroluje notifikace a kalendář
+- uživatel zkontorluje jím přidanou lokalitu a komentáře, jelikož je zvědavý, jak moc lidé mají rádi jeho dílo
+- uživatel upraví text na svém profilu, protože mu přibila záliba
+- uživatel se odhlásí
